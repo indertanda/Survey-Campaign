@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code4.in - Global Survey Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #141E30, #243B55);
+            color: #fff;
+            text-align: center;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(20, 30, 48, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00d9ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 12px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00d9ff;
+        }
+        .btn {
+            background: #00d9ff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: black;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #00b8e6;
+        }
+        .hero {
+            padding: 120px 20px;
+            background: url('https://source.unsplash.com/1600x900/?technology,digital') no-repeat center/cover;
+            position: relative;
+            text-align: center;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 30, 48, 0.6);
+        }
+        .hero h1, .hero p, .cta-button {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #00d9ff;
+            color: black;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+        .cta-button:hover {
+            background: #00b8e6;
+            transform: scale(1.1);
+        }
+        .extra-content {
+            margin: 50px auto;
+            width: 80%;
+            text-align: center;
+        }
+        .extra-content img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        .language-switcher select {
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo" onclick="goHome()">Code4.in</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="surveys.html">Surveys</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="btn">Login</a></li>
+           <li><a href="signup.html" class="btn">Sign Up</a></li> 
+        </ul>
+    </nav>
+    <div class="language-switcher">
+        <select id="languageSelector" onchange="changeLanguage()">
+            <option value="">Select Language</option>
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="zh-CN">Chinese</option>
+            <option value="ja">Japanese</option>
+            <option value="ru">Russian</option>
+            <option value="it">Italian</option>
+            <option value="ar">Arabic</option>
+            <option value="pt">Portuguese</option>
+        </select>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Earn by Sharing Your Opinion</h1>
+    <p>Participate in surveys and get rewarded instantly.</p>
+    <a href="login.html" class="cta-button">Get Started</a>
+</section>
+
+<section class="extra-content">
+    <h2>Why Choose Us?</h2>
+    <p>🚀 <strong>Instant Earnings</strong> – Get rewarded as soon as you complete a survey!</p>
+    <p>💡 <strong>Smart & Easy</strong> – Simple surveys that take just a few minutes.</p>
+    <p>🌍 <strong>Global Reach</strong> – Participate from anywhere, anytime.</p>
+    <img src="https://source.unsplash.com/600x400/?money,success" alt="Earn Online">
+</section>
+
+<script>
+    function goHome() {
+        window.location.href = "index.html";
+    }
+
+    function changeLanguage() {
+        let selectedLang = document.getElementById("languageSelector").value;
+        let googleTranslateSelect = document.querySelector(".goog-te-combo");
+
+        if (googleTranslateSelect && selectedLang) {
+            googleTranslateSelect.value = selectedLang;
+            googleTranslateSelect.dispatchEvent(new Event("change"));
+        }
+    }
+
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+</script>
+
+<!-- Google Translate API -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div id="google_translate_element" style="display: none;"></div>
+
+</body>
+</html>

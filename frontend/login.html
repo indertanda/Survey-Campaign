@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up - Code4.in</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #141E30, #243B55);
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background: #00d9ff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #00b8e6;
+        }
+        .toggle-link {
+            cursor: pointer;
+            color: #00d9ff;
+            margin-top: 15px;
+            display: block;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #00d9ff;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background: #00b8e6;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-button">Home</a>
+    <div class="container">
+        <h2 id="formTitle">Login to Code4.in</h2>
+        <form id="authForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <div id="ageField" style="display: none;">
+                <label for="age">Enter Your Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            
+            <button type="submit" id="submitBtn">Login</button>
+        </form>
+        <p id="toggleText">Don't have an account? <span class="toggle-link" onclick="toggleForm()">Sign Up</span></p>
+    </div>
+
+    <script>
+        let isLogin = true;
+        function toggleForm() {
+            isLogin = !isLogin;
+            document.getElementById("formTitle").innerText = isLogin ? "Login to Code4.in" : "Sign Up for Code4.in";
+            document.getElementById("submitBtn").innerText = isLogin ? "Login" : "Sign Up";
+            document.getElementById("toggleText").innerHTML = isLogin ? "Don't have an account? <span class='toggle-link' onclick='toggleForm()'>Sign Up</span>" : "Already have an account? <span class='toggle-link' onclick='toggleForm()'>Login</span>";
+            document.getElementById("ageField").style.display = isLogin ? "none" : "block";
+        }
+
+        document.getElementById("authForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let age = document.getElementById("age").value;
+            
+            if (!isLogin) {
+                alert("Sign up successful! Please log in.");
+                toggleForm(); // Redirect to login after signup
+                return;
+            }
+            
+            localStorage.setItem("userAge", age);
+            window.location.href = "campaigns_all.html";
+        });
+    </script>
+</body>
+</html>

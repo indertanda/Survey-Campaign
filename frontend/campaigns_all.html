@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns - Code4.in</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .task-level, .spin-popup {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .spin-popup img {
+            width: 30px;
+            height: 30px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .campaign-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .campaign-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+        .campaign-img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .campaign-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .campaign-description {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        .task-button, .detail-button {
+            background: #00d9ff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-bottom: 5px;
+        }
+        .task-button:hover, .detail-button:hover {
+            background: #00b8e6;
+        }
+        .notified-banner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .back-home {
+            display: block;
+            margin-top: 20px;
+            color: #00d9ff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-home:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="task-level">Task Level: 1</div>
+    <div class="spin-popup" onclick="spinWheel()">
+        <img src="spin_icon.png" alt="Spin"> Spin & Win
+    </div>
+    <h1>Available Campaigns</h1>
+    <div class="container">
+        <div class="campaign-card">
+            <div class="notified-banner">18+ Only</div>
+            <img src="survey.jpg" alt="Survey" class="campaign-img">
+            <div class="campaign-title">Survey Campaign 1</div>
+            <div class="campaign-description">Complete a short survey and earn rewards.</div>
+            <button class="task-button" onclick="location.href='task_page.html'">Start Task</button>
+            <button class="detail-button" onclick="location.href='campaign_detail.html'">Campaign Details</button>
+        </div>
+        <div class="campaign-card">
+            <div class="notified-banner" style="background: green;">All Ages</div>
+            <img src="review.jpg" alt="Product Review" class="campaign-img">
+            <div class="campaign-title">Product Review</div>
+            <div class="campaign-description">Review a product and share your thoughts.</div>
+            <button class="task-button" onclick="location.href='task_page.html'">Start Task</button>
+            <button class="detail-button" onclick="location.href='campaign_detail.html'">Campaign Details</button>
+        </div>
+        <div class="campaign-card">
+            <div class="notified-banner">18+ Only</div>
+            <img src="research.jpg" alt="Market Research" class="campaign-img">
+            <div class="campaign-title">Market Research</div>
+            <div class="campaign-description">Help us with market analysis and get rewarded.</div>
+            <button class="task-button" onclick="location.href='task_page.html'">Start Task</button>
+            <button class="detail-button" onclick="location.href='campaign_detail.html'">Campaign Details</button>
+        </div>
+    </div>
+    <a href="index.html" class="back-home">Back to Home</a>
+    
+    <script>
+        function spinWheel() {
+            let chance = Math.random();
+            if (chance <= 0.1) {
+                alert("🎉 Congratulations! You won a bonus reward!");
+            } else {
+                alert("😢 Better luck next time! Keep completing tasks for more chances.");
+            }
+        }
+    </script>
+</body>
+</html>
